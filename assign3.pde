@@ -41,7 +41,6 @@ void setup(){
   spacingW=(height/3)/COUNT;
   enemyX=0;
   enemyY=240;
-  gameState = GAME_START;
 }
 void draw(){
   //background
@@ -87,5 +86,4 @@ if(enemyQ>=640){
    rect(5,0,rectX,rectY);
    image(blood,blood1,blood2);
    image(thing,thingX,thingX);
-   break;
    }
