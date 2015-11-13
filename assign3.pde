@@ -3,9 +3,16 @@ PImage backgroundImg1;
 PImage backgroundImg2;
 PImage shipImg1;
 PImage shipImg2;
+PImage blood;
 PImage thing;
-int bgX=640;
-int bgQ=0;
+boolean upPressed = false;
+boolean downPressed = false;
+boolean leftPressed = false;
+boolean rightPressed = false;
+final int GAME_START=1,GAME_RUN=2;
+int gameState;
+int bgX=0;
+int bgQ=640;
 int fighterX=580;
 int fighterY=240;
 int rectX=200;
@@ -27,7 +34,6 @@ final int COUNT2=5;
 float spacingQ;
 float spacingW;
 float speed = 5;
-int state;
 void setup(){
   size(640,480);
   backgroundImg1= loadImage("img/bg1.png");
@@ -42,24 +48,36 @@ void setup(){
   spacingW=(height/3)/COUNT;
   enemyX=0;
   enemyY=240;
+  gameState = GAME_START;
 }
 void draw(){
-  bgX+=1;
-  bgQ+=1;
- switch(state){
-    case 1 :  
-  //background  
- 
-    if(bgQ==0){
-      bgX = -640;
+  
+  bgX-=1;
+  bgQ-=1;
+//background
+      bgQ = bgX+640;
     }
-    if(bgx==0){
-      bgQ = -640;
+    if(bgQ<=0){
+      bgX = bgQ+640;
     }
      image(backgroundImg1,bgX,0);
      image(backgroundImg2,bgQ,0);
-     break;
-    case 2 :
+
+     //no over
+     if(fighterY > 480){
+       fighterY = 0;
+     }
+     if(fighterY < 0){
+       fighterY = 480;
+     }
+     if(fighterX >640){
+       fighterX = 0;
+     }
+     if(fighterX < 0){
+       fighterX = 640;
+     }
+     image(shipImg1,fighterX,fighterY);      
+     
  float last=enemyX - 165; //save last X position and go back
  
  for (int i=0;i<COUNT;i++){
@@ -85,9 +103,10 @@ if(enemyQ>=640){
  } 
 }
 
-break;
+
    fill(255,0,0);
    rect(5,0,rectX,rectY);
    image(blood,blood1,blood2);
    image(thing,thingX,thingX);
+   break;
    }
