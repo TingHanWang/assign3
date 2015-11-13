@@ -122,7 +122,7 @@ s=0;
  float last=enemyX - 165; //save last X position and go back
  
  for (int i=0;i<COUNT;i++){
-   enemyX = i*spacingX + last;    //last postion + spacingX
+   enemyX = i*spacingX;    //last postion + spacingX
    image(shipImg2,enemyX,enemyY);
  } 
    
@@ -130,7 +130,7 @@ if(enemyX>=640){    //enemyX will grow and bigger than 640, like 650 660..., so 
    last = enemyQ -165; //save last X position and go back
    enemyW=random(30,450);
    for (int i=0;i<COUNT;i++){
-     enemyQ = i*spacingQ + last;
+     enemyQ = i*spacingQ;
      enemyW = i*spacingW;
      image(shipImg2,enemyQ,enemyW);
    }
@@ -139,7 +139,7 @@ if(enemyQ>=640){
  last = enemyX -165; //save last X position and go back
  enemyY=random(30,450);
   for (int i=0;i<COUNT;i++){
-   enemyX = i*spacingX + last;    //last postion + spacingX
+   enemyX = i*spacingX;    //last postion + spacingX
    image(shipImg2,enemyX,enemyY);
  } 
 }
