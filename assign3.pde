@@ -51,18 +51,17 @@ void setup(){
   gameState = GAME_START;
 }
 void draw(){
-  
+  //background
   bgX-=1;
   bgQ-=1;
-//background
-     image(backgroundImg1,bgX,0);
-     image(backgroundImg2,bgQ,0);
+  image(backgroundImg1,bgX,0);
+  image(backgroundImg2,bgQ,0);
      
-    if(bgQ>=640){
-      bgX = 0;
+    if(bgQ+640<=0){
+      bgX = 640;
     }
-    if(bgx>=640){
-      bgQ = 0;
+    if(bgx-640<=0){
+      bgQ = 640;
     }
     
  float last=enemyX - 165; //save last X position and go back
