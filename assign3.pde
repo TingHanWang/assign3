@@ -56,8 +56,8 @@ void setup(){
 }
 void draw(){
   
-  bgX-=1;
-  bgQ-=1;
+  bgX+=1;
+  bgQ+=1;
 //background
  switch(gameState){
     case GAME_START:
