@@ -62,10 +62,10 @@ void draw(){
  switch(gameState){
   
     case GAME_RUN:
-    if(bgX==0){
+    if(bgX==640){
       bgQ = -640;
     }
-    if(bgQ==0){
+    if(bgQ==640){
       bgX = -640;
     }
      image(backgroundImg1,bgX,0);
@@ -78,7 +78,7 @@ void draw(){
    image(shipImg2,enemyX,enemyY);
  } 
    
-if(enemyX>=640){    //enemyX will grow and bigger than 640, like 650 660..., so we cannot write enemyX==640
+if(enemyX==640){    //enemyX will grow and bigger than 640, like 650 660..., so we cannot write enemyX==640
    last = enemyQ -165; //save last X position and go back
    enemyW=random(30,450);
   for (int i=0;i<COUNT;i++){
@@ -87,9 +87,9 @@ if(enemyX>=640){    //enemyX will grow and bigger than 640, like 650 660..., so 
      image(shipImg2,enemyQ,enemyW);
    }
 }
-if(enemyQ>=640){
+if(enemyQ==640){
  last = enemyX -165; //save last X position and go back
- enemyY=random(30,450);
+ enemyY=random(30,450));
   for (int i=0;i<COUNT;i++){
    enemyX = i*spacingX + last;    //last postion + spacingX
    image(shipImg2,enemyX,enemyY);
