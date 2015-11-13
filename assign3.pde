@@ -44,8 +44,8 @@ void setup(){
 }
 void draw(){
   //background
-  bgX+=1;
-  bgQ+=1;
+  bgX-=1;
+  bgQ-=1;
   image(backgroundImg1,bgX,0);
   image(backgroundImg2,bgQ,0);
      
