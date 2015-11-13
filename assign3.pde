@@ -1,8 +1,4 @@
  //You should implement your assign3 here.
-
-void setup () {
-  size(640, 480) ;
-
 PImage startImg1;
 PImage startImg2;
 PImage backgroundImg1;
@@ -121,8 +117,7 @@ if(enemyQ>=640){
    image(shipImg2,enemyX,enemyY);
  } 
  }
- 
-void draw() {
+
  
    fill(255,0,0);
    rect(5,0,rectX,rectY);
@@ -130,37 +125,4 @@ void draw() {
    image(thing,thingX,thingX);
    break;
    }
-}
- void keyPressed(){
-   if(key == CODED){
-     switch(keyCode){
-       case UP:
-       upPressed = true;
-       break;
-       case DOWN:
-       downPressed = true;
-      break;
-      case LEFT:
-       leftPressed = true;
-       break;
-       case RIGHT:
-       rightPressed = true;
-       break;
-     }
-   }
-}
-void keyReleased(){
-   switch(keyCode){
-      case UP:
-      upPressed = false;
-       break;
-       case DOWN:
-       downPressed = false;
-       break;
-       case LEFT:
-       leftPressed = false;
-       break;       case RIGHT:
-       rightPressed = false;
-       break;
-   }
- }
+
