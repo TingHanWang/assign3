@@ -84,11 +84,11 @@ a=0;
 s=0;
     break;
     case GAME_RUN:
-    if(bgX<=0){
-      bgQ = bgX+640;
+    if(bgX<=640){
+      bgQ = bgX;
     }
-    if(bgQ<=0){
-      bgX = bgQ+640;
+    if(bgQ<=640){
+      bgX = bgQ;
     }
      image(backgroundImg1,bgX,0);
      image(backgroundImg2,bgQ,0);
