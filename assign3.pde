@@ -51,9 +51,9 @@ void setup(){
   gameState = GAME_START;
 }
 void draw(){
-  
-  bgX-=1;
-  bgQ-=1;
+ image(backgroundImg1,bgX,0);
+  bgX+=1;
+  bgQ+=1;
 //background
       bgQ = bgX+640;
     }
