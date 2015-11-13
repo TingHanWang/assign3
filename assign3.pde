@@ -3,14 +3,7 @@ PImage backgroundImg1;
 PImage backgroundImg2;
 PImage shipImg1;
 PImage shipImg2;
-PImage blood;
 PImage thing;
-boolean upPressed = false;
-boolean downPressed = false;
-boolean leftPressed = false;
-boolean rightPressed = false;
-final int GAME_START=1,GAME_RUN=2;
-int gameState;
 int bgX=640;
 int bgQ=0;
 int fighterX=580;
@@ -52,8 +45,8 @@ void setup(){
 }
 void draw(){
   //background
-  bgX-=1;
-  bgQ-=1;
+  bgX+=1;
+  bgQ+=1;
   image(backgroundImg1,bgX,0);
   image(backgroundImg2,bgQ,0);
      
