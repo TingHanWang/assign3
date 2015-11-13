@@ -27,6 +27,7 @@ final int COUNT2=5;
 float spacingQ;
 float spacingW;
 float speed = 5;
+int state;
 void setup(){
   size(640,480);
   backgroundImg1= loadImage("img/bg1.png");
@@ -43,20 +44,21 @@ void setup(){
   enemyY=240;
 }
 void draw(){
+  bgX+=1;
+  bgQ+=1;
  switch(state){
     case 1 :  
   //background  
-  image(backgroundImg1,bgX,0);
-  image(backgroundImg2,bgQ,0);
-  bgX+=1;
-  bgQ+=1;
+ 
     if(bgQ==0){
       bgX = -640;
     }
     if(bgx==0){
       bgQ = -640;
     }
-    break;
+     image(backgroundImg1,bgX,0);
+     image(backgroundImg2,bgQ,0);
+     break;
     case 2 :
  float last=enemyX - 165; //save last X position and go back
  
