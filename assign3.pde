@@ -60,35 +60,13 @@ void draw(){
   bgQ+=1;
 //background
  switch(gameState){
-    case GAME_START:
-   image(startImg1,0,0);
-    if(mouseX >= 200 && mouseX <= 400 && mouseY >= 380 && mouseY <= 430){
-      if(mousePressed){
-        gameState = GAME_RUN;
-     }
-      else{
-       image(startImg2,0,0);
-      }
-    }  
-bgX=0;
-bgQ=640;
-fighterX=580;
-fighterY=240;
-rectX=200;
-rectY=20;
-blood1=0;
-blood2=0;
-thingX=300;
-thingY=300;
-a=0;
-s=0;
-    break;
+  
     case GAME_RUN:
-    if(bgX==640){
-      bgQ = 0;
+    if(bgX==0){
+      bgQ = -640;
     }
-    if(bgQ==640){
-      bgX = 0;
+    if(bgQ==0){
+      bgX = -640;
     }
      image(backgroundImg1,bgX,0);
      image(backgroundImg2,bgQ,0);
