@@ -43,6 +43,8 @@ void setup(){
   enemyY=240;
 }
 void draw(){
+ switch(state){
+    case 1 :  
   //background  
   image(backgroundImg1,bgX,0);
   image(backgroundImg2,bgQ,0);
@@ -54,6 +56,8 @@ void draw(){
     if(bgx==0){
       bgQ = -640;
     }
+    break;
+    case 2 :
  float last=enemyX - 165; //save last X position and go back
  
  for (int i=0;i<COUNT;i++){
@@ -79,7 +83,7 @@ if(enemyQ>=640){
  } 
 }
 
-
+break;
    fill(255,0,0);
    rect(5,0,rectX,rectY);
    image(blood,blood1,blood2);
