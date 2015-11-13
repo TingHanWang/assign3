@@ -14,7 +14,7 @@ boolean rightPressed = false;
 final int GAME_START=1,GAME_RUN=2;
 int gameState;
 int bgX=0;
-int bgQ=640;
+int bgQ=-640;
 int fighterX=580;
 int fighterY=240;
 int rectX=200;
@@ -85,10 +85,10 @@ s=0;
     break;
     case GAME_RUN:
     if(bgX==640){
-      bgQ = 0;
+      bgQ = bgX;
     }
     if(bgQ==640){
-      bgX = 0;
+      bgX = bgQ;
     }
      image(backgroundImg1,bgX,0);
      image(backgroundImg2,bgQ,0);
