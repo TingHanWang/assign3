@@ -112,44 +112,30 @@ bgX+=1;
 //background
  switch(gameState){
     case GAME_START:
- for (int i=0;i<COUNT;i++){
-      image(shipImg2,enemyX-40,enemyY);
-      image(shipImg2,enemyX-80,enemyY);
-      image(shipImg2,enemyX-120,enemyY);
-      image(shipImg2,enemyX-160,enemyY);
-      image(shipImg2,enemyX-200,enemyY);
+  float last=enemyX - 165; //save last X position and go back
+ 
+for (int i=0;i<COUNT;i++){
+  enemyX = i*spacingX + last;    //last postion + spacingX
+   image(shipImg2,enemyX,enemyY);
  } 
- enemyX+=3;
-if(enemyX-200 > 640){    
-  gameState = GAME_RUN;
+   
+if(enemyX-165>=640){    //enemyX will grow and bigger than 640, like 650 660..., so we cannot write enemyX==640
+   last = enemyQ -165; //save last X position and go back
+   enemyW=random(30,450);
+   for (int i=0;i<COUNT;i++){
+    enemyQ = i*spacingQ + last;
+     enemyW = i*spacingW;
+     image(shipImg2,enemyQ,enemyW);
    }
-    break;
-    case GAME_RUN:
-       for (int i=0;i<COUNT;i++){
-      image(shipImg2,enemyQ-40,enemyW);
-      image(shipImg2,enemyQ-80,enemyW+40);
-      image(shipImg2,enemyQ-120,enemyW+80);
-      image(shipImg2,enemyQ-160,enemyW+120);
-      image(shipImg2,enemyQ-200,enemyW+160);
- }
-    enemyQ+=3;
- if(enemyQ  >= 840 ){
-    gameState = GAME_PP;
-    }
-break;
-  case GAME_PP:
- for (int i=0;i<COUNT;i++){
-      image(shipImg2,enemyX-40,enemyY);
-      image(shipImg2,enemyX-80,enemyY);
-      image(shipImg2,enemyX-120,enemyY);
-      image(shipImg2,enemyX-160,enemyY);
-      image(shipImg2,enemyX-200,enemyY);
- } 
- enemyX+=3;
- if(enemyX-200 == 640 ){
-    gameState = GAME_RUN;
-    }
-    break;
+   if(enemyQ-165>=640){    //enemyX will grow and bigger than 640, like 650 660..., so we cannot write enemyX==640
+     last = enemyX -165; //save last X position and go back
+   enemyY=random(30,450);
+   for (int i=0;i<COUNT;i++){
+    enemyX = i*spacingQ + last;
+     image(shipImg2,enemyX,enemyY);
+   }
+   }
+}
  }
 }
 
