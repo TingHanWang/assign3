@@ -120,24 +120,26 @@ for (int i=0;i<COUNT;i++){
  } 
    
 if(enemyX-165>=640){    //enemyX will grow and bigger than 640, like 650 660..., so we cannot write enemyX==640
-   last = enemyQ -165; //save last X position and go back
+   gameState=GAME_RUN;
+}
+break;
+case GAME_RUN:
+ last = enemyQ -165; //save last X position and go back
    enemyW=random(30,450);
    for (int i=0;i<COUNT;i++){
     enemyQ = i*spacingQ + last;
      enemyW = i*spacingW;
      image(shipImg2,enemyQ,enemyW);
    }
+   
    if(enemyQ-165>=640){    //enemyX will grow and bigger than 640, like 650 660..., so we cannot write enemyX==640
-     last = enemyX -165; //save last X position and go back
-   enemyY=random(30,450);
-   for (int i=0;i<COUNT;i++){
-    enemyX = i*spacingQ + last;
-     image(shipImg2,enemyX,enemyY);
+     gameState=GAME_START;
    }
+   break;
    }
 }
- }
-}
+
+
 
 
  void keyPressed(){
