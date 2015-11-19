@@ -108,7 +108,6 @@ void draw(){
      enemyX+=3;
      if(enemyX>=640+165){
         enemyX=0;
-        enemyY=random(30,250); 
         gameState=GAME_START;
      }
      break;
