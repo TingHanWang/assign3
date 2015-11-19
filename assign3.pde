@@ -11,7 +11,7 @@ boolean upPressed = false;
 boolean downPressed = false;
 boolean leftPressed = false;
 boolean rightPressed = false;
-final int GAME_START=1,GAME_RUN=2,GAME_PP=3;
+final int GAME_START=1,GAME_RUN=2;
 int gameState;
 int bgX=0;
 int bgQ=bgX-640;
@@ -36,9 +36,11 @@ final int COUNT2=5;
 float spacingQ;
 float spacingW;
 float speed = 5;
+
+
 void setup(){
   size(640,480);
-   startImg1 = loadImage("img/start1.png");
+  startImg1 = loadImage("img/start1.png");
   startImg2 = loadImage("img/start2.png");
   backgroundImg1= loadImage("img/bg1.png");
   backgroundImg2= loadImage("img/bg2.png");
@@ -62,117 +64,54 @@ blood1=0;
 blood2=0;
 thingX=300;
 thingY=300;
-a=0;
-s=0;
-  gameState = GAME_START;
+gameState=GAME_START;
 }
-void draw(){
+
+
+void draw(){  
+  enemyX+=3;
+  bgX+=1;
+  bgQ+=1;
   
-bgX+=1;
-      bgQ+=1;
-    if(bgX==0){
+  if(bgX==0){
       bgQ =-640;
-    }
-    if(bgQ==0){
+  }
+  if(bgQ==0){
       bgX = -640;
-    }
-     image(backgroundImg1,bgX,0);
-     image(backgroundImg2,bgQ,0);
-      if(upPressed){
-       fighterY -=speed;
-     }
-     if(downPressed){
-       fighterY += speed;
-     }
-     if(leftPressed){
-       fighterX -= speed;
-     }
-     if(rightPressed){
-       fighterX += speed;
-     }
-     //no over
-     if(fighterY > 480){
-       fighterY = 0;
-     }
-     if(fighterY < 0){
-       fighterY = 480;
-     }
-     if(fighterX >640){
-       fighterX = 0;
-     }
-     if(fighterX < 0){
-       fighterX = 640;
-     }
-     image(shipImg1,fighterX,fighterY);      
-     image(thing,thingX,thingX);
-       fill(255,0,0);
-   rect(5,0,rectX,rectY);
-   image(blood,blood1,blood2);
+  }
+  image(backgroundImg1,bgX,0);
+  image(backgroundImg2,bgQ,0);
+  image(shipImg1,fighterX,fighterY);      
+  image(thing,thingX,thingX);
+  fill(255,0,0);
+  rect(5,0,rectX,rectY);
+  image(blood,blood1,blood2);
+
   
 //background
- switch(gameState){
+  switch (gameState){
     case GAME_START:
-  float last=enemyX - 165; //save last X position and go back
- 
-for (int i=0;i<COUNT;i++){
-  enemyX = i*spacingX + last;    //last postion + spacingX
-   image(shipImg2,enemyX,enemyY);
- } 
+      for (int i=0;i<COUNT;i++){
+        image(shipImg2,enemyX-i*40,enemyY);
+      } 
    
-if(enemyX-165>=640){    //enemyX will grow and bigger than 640, like 650 660..., so we cannot write enemyX==640
-   gameState=GAME_RUN;
-}
-break;
-case GAME_RUN:
- last = enemyQ -165; //save last X position and go back
-   enemyW=random(30,450);
-   for (int i=0;i<COUNT;i++){
-    enemyQ = i*spacingQ + last;
-     enemyW = i*spacingW;
-     image(shipImg2,enemyQ,enemyW);
-   }
-   
-   if(enemyQ-165>=640){    //enemyX will grow and bigger than 640, like 650 660..., so we cannot write enemyX==640
-     gameState=GAME_START;
-   }
-   break;
-   }
-}
-
-
-
-
- void keyPressed(){
-   if(key == CODED){
-     switch(keyCode){
-       case UP:
-       upPressed = true;
-       break;
-       case DOWN:
-       downPressed = true;
-       break;
-       case LEFT:
-       leftPressed = true;
-       break;
-       case RIGHT:
-       rightPressed = true;
-       break;
+      if(enemyX>=640+165){  
+        enemyX=0;
+        enemyY=random(30,450);
+        gameState=GAME_RUN;
+      }    
+      break;
+    case GAME_RUN:
+      for (int i=0;i<COUNT;i++){
+        image(shipImg2,enemyX-i*40,enemyY+i*60);
+      }
+     enemyX+=3;
+     if(enemyX>=640+165){
+        enemyX=0;
+        enemyY=random(30,250); 
+        gameState=GAME_START;
      }
-   }
-}
-void keyReleased(){
-   switch(keyCode){
-       case UP:
-       upPressed = false;
-       break;
-       case DOWN:
-       downPressed = false;
-       break;
-       case LEFT:
-       leftPressed = false;
-       break;
-       case RIGHT:
-       rightPressed = false;
-       break;
-   }
+     break;
+  }
+
 }
